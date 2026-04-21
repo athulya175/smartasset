@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-nt75qand8%26&l4+*(y!uctm4+_mx0t6hhg3@ox0$sejcfq8av
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Application definition
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 AUTH_USER_MODEL = 'asset.CustomUser'
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
