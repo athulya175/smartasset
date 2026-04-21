@@ -25,7 +25,7 @@ function Assets() {
   console.log(localStorage.getItem('role'));
   useEffect(() => {
     // Fetch assets
-    fetchWithAuth("/api/assets/?search=" + search)
+    fetchWithAuth("https://smartasset.onrender.com/api/assets/?search=" + search)
       .then((data) => {
         setAssets(data.results || []);
         setNextPage(data.next);
@@ -34,7 +34,7 @@ function Assets() {
       .catch((err) => console.error(err));
 
     // Fetch users
-    fetchWithAuth("/api/users/")
+    fetchWithAuth("https://smartasset.onrender.com/api/users/")
       .then((data) => setUsers(data.results || []))
       .catch((err) => console.error(err));
   }, [search]);
@@ -69,7 +69,7 @@ function Assets() {
         .catch((err) => console.error(err));
     } else {
       // CREATE
-      fetchWithAuth("/api/assets/", {
+      fetchWithAuth("https://smartasset.onrender.com/api/assets/", {
         method: "POST",
         body: JSON.stringify(payload),
       })
@@ -108,7 +108,7 @@ function Assets() {
       return;
     }
 
-    fetchWithAuth("/api/assignments/", {
+    fetchWithAuth("https://smartasset.onrender.com/api/assignments/", {
       method: "POST",
       body: JSON.stringify({
         asset: assetId,

@@ -4,7 +4,7 @@ function Assignments() {
   const [assignments, setAssignments] = useState([]);
   const role = localStorage.getItem("role");
   const fetchAssignments = () => {
-    fetchWithAuth("/api/assignments/")
+    fetchWithAuth("https://smartasset.onrender.com/api/assignments/")
       .then((data) => {
         if (!data) return;
         setAssignments(data.results || []);
