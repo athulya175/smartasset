@@ -12,7 +12,7 @@ function Inventory() {
   const [editingItem, setEditingItem] = useState(null);
   const role = localStorage.getItem('role');
  useEffect(() => {
-  fetchWithAuth("https://smartasset.onrender.com/api/inventory/")
+  fetchWithAuth("/api/inventory/")
     .then(data => {
       if (!data) return;
       setItems(data.results || []);
@@ -22,7 +22,7 @@ function Inventory() {
 
   const handleAdd = () => {
     const method=editingItem?"PUT":"POST"
-    const url=editingItem?`/api/inventory/${editingItem}/`:"https://smartasset.onrender.com/api/inventory/";
+    const url=editingItem?`/api/inventory/${editingItem}/`:"/api/inventory/";
     fetchWithAuth(url, {
       method,
       body: JSON.stringify(newItem)

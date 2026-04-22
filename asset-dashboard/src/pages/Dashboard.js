@@ -15,7 +15,7 @@ const chartData = [
   { name: "Tickets", value: data.open_tickets }
 ];
   useEffect(() => {
-    fetchWithAuth("https://smartasset.onrender.com/api/dashboard/")
+    fetchWithAuth("/api/dashboard/")
       .then((data) => setData(data))
       .catch((err) => console.error(err));
   }, []);

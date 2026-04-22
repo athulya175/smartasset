@@ -8,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
 
 const handleLogin = () => {
-  fetch("https://smartasset.onrender.com/api/login/", {
+  fetch("/api/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
