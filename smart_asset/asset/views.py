@@ -26,7 +26,7 @@ class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
     serializer_class = AssetSerializer
     filter_backends = [SearchFilter]
-    search_fields = ['name', 'asset_type', 'status']
+    search_fields = ['name']
     def get_permissions(self):              # add this method
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
             return [IsAdminRole()]          # only admin
