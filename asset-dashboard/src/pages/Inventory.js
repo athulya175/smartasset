@@ -22,7 +22,7 @@ function Inventory() {
 
   const handleAdd = () => {
     const method=editingItem?"PUT":"POST"
-    const url=editingItem?`/api/inventory/${editingItem}/`:"https://smartasset.onrender.com/api/inventory/";
+    const url=editingItem?`https://smartasset.onrender.com/api/inventory/${editId}/`:"https://smartasset.onrender.com/api/inventory/";
     fetchWithAuth(url, {
       method,
       body: JSON.stringify(newItem)
@@ -42,13 +42,13 @@ function Inventory() {
         setNewItem({ name: "", quantity: "", threshold: "" });
       });
   };
-
-  const handleDelete = (id) => {
-  fetchWithAuth(`/api/inventory/${id}/`, {
+const handleDelete = (id) => {
+  fetchWithAuth(`https://smartasset.onrender.com/api/inventory/${id}/`, {
     method: "DELETE",
   })
   .then(() => {
-    setItems(prev => prev.filter(item => item.id !== id));
+    fetchWithAuth("https://smartasset.onrender.com/api/inventory/")
+      .then((data) => setItems(data.results || data || []));
   });
 };
 const handleEdit=(item)=>{
