@@ -12,15 +12,15 @@ function Tickets() {
   const[editItem,setEditItem]=useState(null)
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetchWithAuth("/api/tickets/").then((data) =>
+    fetchWithAuth("https://smartasset.onrender.com/api/tickets/").then((data) =>
       setTickets(data.results || []),
     );
 
-    fetchWithAuth("/api/assets/all/").then((data) =>
+    fetchWithAuth("https://smartasset.onrender.com/api/assets/all/").then((data) =>
       setAssets(data || []),
     );
 
-    fetchWithAuth("/api/users/").then((data) =>
+    fetchWithAuth("https://smartasset.onrender.com/api/users/").then((data) =>
       setUsers(data.results || []),
     );
   }, []);
