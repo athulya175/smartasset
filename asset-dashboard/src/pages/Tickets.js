@@ -27,7 +27,7 @@ function Tickets() {
 
   const handleAdd = () => {
     const method=editItem?"PUT":"POST"
-    const url=editItem?`/api/tickets/${editItem}/`:`/api/tickets/`
+    const url=editItem?`https://smartasset.onrender.com/api/tickets/${editItem}/`:`/api/tickets/`
     if (!newTicket.asset || !newTicket.issue) {
       alert("Fill all fields");
       return;
@@ -84,10 +84,11 @@ function Tickets() {
     });
   };
   const handleDelete = (id) => {
-    fetchWithAuth(`/api/tickets/${id}/`, {
+    fetchWithAuth(`https://smartasset.onrender.com/api/tickets/${id}/`, {
       method: "DELETE",
     }).then(() => {
-      setTickets((prev) => prev.filter((tickets) => tickets.id !== id));
+      fetchWithAuth("https://smartasset.onrender.com/api/tickets/")
+        .then((data) => setTickets(data.results || data || []))
     });
   };
   const handleEdit=(item)=>{
