@@ -21,7 +21,7 @@ function Assignments() {
       ? { date_returned: null } // undo return
       : { date_returned: new Date().toISOString().split("T")[0] };
 
-    fetchWithAuth(`/api/assignments/${item.id}/`, {
+    fetchWithAuth(`https://smartasset.onrender.com/api/assignments/${item.id}/`, {
       method: "PATCH",
       body: JSON.stringify(updatedData),
     })
@@ -38,12 +38,11 @@ function Assignments() {
     borderBottom: "1px solid #333",
   };
   const handleDelete = (id) => {
-    fetchWithAuth(`/api/assignments/${id}/`, {
+    fetchWithAuth(`https://smartasset.onrender.com/api/assignments/${id}/`, {
       method: "DELETE",
     }).then(() => {
-      setAssignments((prev) =>
-        prev.filter((assignments) => assignments.id !== id),
-      );
+      fetchWithAuth(`https://smartasset.onrender.com/api/assignments/`)
+      .then((data)=>setAssignments(data.results)||data||[])
     });
   };
   return (
