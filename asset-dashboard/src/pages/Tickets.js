@@ -11,6 +11,7 @@ function Tickets() {
   });
   const[editItem,setEditItem]=useState(null)
   const [users, setUsers] = useState([]);
+  const role = localStorage.getItem('role')
   useEffect(() => {
     fetchWithAuth("https://smartasset.onrender.com/api/tickets/").then((data) =>
       setTickets(data.results || []),
@@ -216,7 +217,8 @@ function Tickets() {
             <th style={thStyle}>Issue</th>
             <th style={thStyle}>Technician</th>
             <th style={thStyle}>Status</th>
-            <th style={thStyle}>Technician Allocation</th>
+
+            {role === 'admin' && <th style={thStyle}>Technician Allocation</th>}
             <th style={thStyle}>Action</th>
           </tr>
         </thead>
@@ -273,6 +275,7 @@ function Tickets() {
                     </button>
                   
                 </td>
+                {role === 'admin' && (
                 <td style={tdStyle}>
                   <select
                     style={selectStyle}
@@ -288,12 +291,16 @@ function Tickets() {
                   </select>
                   
                 </td>
-                <td><button
+                )}
+                
+                <td>
+                  {role === 'admin' && (<button
                     style={buttonStyle}
                     onClick={() => handleDelete(t.id)}
                   >
                     Delete
                   </button>
+                  )}
                   <button
                     style={buttonStyle}
                     onClick={() => handleEdit(t)}
