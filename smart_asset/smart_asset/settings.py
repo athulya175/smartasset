@@ -57,7 +57,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'smart_asset.urls'
 CORS_ALLOW_ALL_ORIGINS = True
-
+CORS_ALLOWED_ORIGINS = [
+    "https://smartasset-frontend.onrender.com",
+]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
