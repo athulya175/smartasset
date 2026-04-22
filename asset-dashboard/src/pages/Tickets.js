@@ -27,7 +27,7 @@ function Tickets() {
 
   const handleAdd = () => {
     const method=editItem?"PUT":"POST"
-    const url=editItem?`https://smartasset.onrender.com/api/tickets/${editItem}/`:`/api/tickets/`
+    const url=editItem?`https://smartasset.onrender.com/api/tickets/${editItem}/`:`https://smartasset.onrender.com/api/tickets/`
     if (!newTicket.asset || !newTicket.issue) {
       alert("Fill all fields");
       return;
@@ -66,7 +66,7 @@ function Tickets() {
     
     if (!techId) return;
 
-    fetchWithAuth(`/api/tickets/${ticketId}/`, {
+    fetchWithAuth(`https://smartasset.onrender.com/api/tickets/${ticketId}/`, {
       method: "PATCH",
       body: JSON.stringify({
         technician: techId,
