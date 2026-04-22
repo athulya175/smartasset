@@ -54,7 +54,7 @@ function Assets() {
 
     if (editId) {
       // UPDATE
-      fetchWithAuth(`/api/assets/${editId}/`, {
+      fetchWithAuth(`https://smartasset.onrender.com/api/assets/${editId}/`, {
         method: "PUT",
         body: JSON.stringify(payload),
       })
