@@ -51,7 +51,7 @@ function Tickets() {
 
   const handleToogleStatus = (ticket) => {
     const newStatus=ticket.status==="Open"?"Closed":"Open"
-    fetchWithAuth(`/api/tickets/${ticket.id}/`, {
+    fetchWithAuth(`https://smartasset.onrender.com/api/tickets/${ticket.id}/`, {
       method: "PATCH",
       body: JSON.stringify({ status: newStatus }),
     })
