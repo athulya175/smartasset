@@ -22,7 +22,7 @@ function Inventory() {
 
   const handleAdd = () => {
     const method=editingItem?"PUT":"POST"
-    const url=editingItem?`https://smartasset.onrender.com/api/inventory/${editId}/`:"https://smartasset.onrender.com/api/inventory/";
+    const url=editingItem?`https://smartasset.onrender.com/api/inventory/${editingItem}/`:"https://smartasset.onrender.com/api/inventory/";
     fetchWithAuth(url, {
       method,
       body: JSON.stringify(newItem)
