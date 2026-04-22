@@ -16,10 +16,16 @@ export const fetchWithAuth = async (url, options = {}) => {
     return null;
   }
 
-
-  if (res.status === 204) {
-    return null; // DELETE response
+  if (res.status === 204 || res.status === 205) {
+    return null;
   }
 
-  return res.json();
+  const text = await res.text();
+  if (!text) return null;
+  
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    return null;
+  }
 };
