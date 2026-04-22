@@ -82,12 +82,18 @@ function Assets() {
     }
   };
 
-  const handleDelete = (id) => {
-    fetchWithAuth(`/api/assets/${id}/`, {
+ const handleDelete = (id) => {
+    fetchWithAuth(`https://smartasset.onrender.com/api/assets/${id}/`, {
       method: "DELETE",
     })
       .then(() => {
-        setAssets(assets.filter((item) => item.id !== id));
+        // refetch the list instead of filtering locally
+        fetchWithAuth("https://smartasset.onrender.com/api/assets/?search=" + search)
+          .then((data) => {
+            setAssets(data.results || []);
+            setNextPage(data.next);
+            setPrevPage(data.previous);
+          })
       })
       .catch((err) => console.error(err));
   };
